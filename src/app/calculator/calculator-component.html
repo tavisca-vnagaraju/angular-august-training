@@ -1,0 +1,10 @@
+<h1>Calculator</h1>
+<div class="result">
+    {{leftNumber}} {{operator}} {{rightNumber}} {{result}}
+</div>
+<div class="calc">
+    <span *ngFor="let c of calcButtons">
+        <input  type="button" [value]="c" class="calc-button" (click)="getButtonValue($event)">
+        <br *ngIf= " c == '+' || c == '-' || c == '*' || c == '/' ">
+    </span>
+</div>

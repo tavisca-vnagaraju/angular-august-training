@@ -1,0 +1,12 @@
+.calc-button{
+    padding: 15px;
+    margin: 2px;
+    font-size: 24px;
+}
+.result{
+    background-color: #dcdcdc;
+    padding: 15px;
+    margin: 10px;
+    width: 20%;
+    font-size: 24px;
+}
