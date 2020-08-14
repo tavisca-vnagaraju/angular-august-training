@@ -52,4 +52,10 @@ export class ProductFormComponent implements OnInit {
   getSelectedProduct(event): void {
      this.product = Object.assign({}, event);
   }
+  deleteRecord(event):void{
+    let index = this.products.indexOf(event);
+    if( index >= 0 ){
+      this.products.splice(index, 1);
+    }
+  }
 }

@@ -133,7 +133,7 @@ IMP*** Each Component must be declaraed in 'declarations' array of NgModule
 
 ======================================================================================
 Ex 2: 
-Define the isDelete input decorated property in the Child component. When this is true, then generate delete button for each row in child table. When this button is clicked then the record must be deleted from parent 
+Define the isDelete input decorated property in the Child component. When this is true, then generate delete button for each row in child table. When this button is clicked then the record must be deleted from parent Done
 
 Ex 3: Validate the complete ProductForm for required for all inputs, Description must not be more than 50 characters, BasePrice Cannot be -ve, ProductName must not have any special characters, ProductId must not have blank space. (Mandatory) Done
 

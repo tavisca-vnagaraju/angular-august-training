@@ -10,10 +10,13 @@ export class TableDirectiveComponent implements OnInit {
   headers: Array<string>;
   @Output() // EventEmitter<T>, cass used to emit event with payload parameter as T
   notify: EventEmitter<any>;
+  @Output() // EventEmitter<T>, cass used to emit event with payload parameter as T
+  deleteRecord: EventEmitter<any>;
   constructor() {
     this.dataSource = new Array<any>();
     this.headers = new Array<string>();
     this.notify = new EventEmitter<any>();
+    this.deleteRecord = new EventEmitter<any>();
   }
 
   ngOnInit():void { }
@@ -35,11 +38,17 @@ export class TableDirectiveComponent implements OnInit {
   get DataSource(): Array<any> {
     return this.dataSource;
   }
+  @Input()
+  isDelete:Boolean;
+  
 
   rowClick(rec: any): void {
     // the emit will pass the data to parent
     // parent must subscribe to the event using
     // event binding and  read data
     this.notify.emit(rec);
+  }
+  onDelete(rec:any):void{
+    this.deleteRecord.emit(rec);
   }
 }

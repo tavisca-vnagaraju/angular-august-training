@@ -98,4 +98,10 @@ export class ProductReactiveFormComponent implements OnInit {
   getAllProducts():Array<Product>{
     return this.products;
   }
+  deleteRecord(event):void{
+    let index = this.products.indexOf(event);
+    if( index >= 0 ){
+      this.products.splice(index, 1);
+    }
+  }
 }
