@@ -79,7 +79,11 @@
                     </tbody>
                 </table> -->
                 <h3>Dynamic Table</h3>
-                <app-tabledirective-component [DataSource]="products" (notify)="getSelectedProduct($event)">
+                <app-tabledirective-component 
+                            [isDelete]="true"
+                            [DataSource]="products"
+                            (notify)="getSelectedProduct($event)"
+                            (deleteRecord)="deleteRecord($event)">
                 </app-tabledirective-component>
                 <hr>
                 <app-tabledirective-component [DataSource]="emps" (notify)="getSelectedProduct($event)">

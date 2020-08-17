@@ -133,13 +133,10 @@ IMP*** Each Component must be declaraed in 'declarations' array of NgModule
 
 ======================================================================================
 Ex 2: 
-Define the isDelete input decorated property in the Child component. When this is true, then generate delete button for each row in child table. When this button is clicked then the record must be deleted from parent 
+Define the isDelete input decorated property in the Child component. When this is true, then generate delete button for each row in child table. When this button is clicked then the record must be deleted from parent Done
 
-Ex 3: Validate the complete ProductForm for required for all inputs, Description must not be more than 50 characters, BasePrice Cannot be -ve, ProductName must not have any special characters, ProductId must not have blank space. (Mandatory)
+Ex 3: Validate the complete ProductForm for required for all inputs, Description must not be more than 50 characters, BasePrice Cannot be -ve, ProductName must not have any special characters, ProductId must not have blank space. (Mandatory) Done
 
-Ex. 4: Write a custom validator that will not accept duplicate value for ProductId (Mandory)
-
-=======================================================================
 RxJs, the Response Extension for JavaScript, provides the Observale Operator System(?) to subscribe to External Http Calls and maintain the received data from it.
 Observale Operator System(?)
 Ths object model that will hold the data and subscription over whihc the data will be 'streamed' to subscriber
@@ -158,3 +155,5 @@ Obseravble.subscribe(), stream data to subscriber when it is available in observ
 
 ======================================================================
 Modify the Product Reactiuve Form with the Http Service Support, to perform CRUD operations. The Table showing the Products data sould have delete button to delete (Note: Delete request must be made form the ProductReactiveFormComponent)
+=======
+Ex. 4: Write a custom validator that will not accept duplicate value for ProductId (Mandory) done
