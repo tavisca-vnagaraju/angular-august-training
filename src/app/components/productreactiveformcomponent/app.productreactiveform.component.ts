@@ -5,6 +5,7 @@ import {Logic} from '../../model/logic';
 import {Manufacturers, Categories} from '../../model/app.constants';
 import {CustomValidator} from './app.custom.validator';
 import { DuplicateProductValidator } from './app.duplicateProduct.validator';
+import {HttpService} from './../../services/app.httpservvice.service';
 
 @Component({
   selector: 'app-productreactiveform-component',
@@ -18,14 +19,16 @@ export class ProductReactiveFormComponent implements OnInit {
   manufacturers = Manufacturers;
   private logic: Logic;
   columnHeaders: Array<string>;
+  message: string;
 
   // define FormGroup instance
   frmProduct: FormGroup;
-  constructor() {
+  constructor(private serv: HttpService) {
     this.product = new Product(0, '', '', '', '', '', 0);
     this.products = new Array<Product>();
     this.logic = new Logic();
     this.columnHeaders = new Array<string>();
+    this.message = '';
 
     // create an instance of FormGroup and bind Product Model to it
     // using FormControl class that accepts the Public property of Model class
@@ -71,11 +74,16 @@ export class ProductReactiveFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.products  =  this.logic.getProducts();
-    
+    //this.products  =  this.logic.getProducts();
+    this.serv.getData().subscribe((resp) => {
+      this.products = resp;
+      this.message = `Data Received Successfully`;
+    }, (error) => {
+      this.message = `Error Occured ${error}`;
+    });
     // read properties from product object
     for (const p of Object.keys(this.product)) {
-       this.columnHeaders.push(p);
+      this.columnHeaders.push(p);
     }
 
   }
@@ -87,7 +95,17 @@ export class ProductReactiveFormComponent implements OnInit {
   save(): void {
     // read the value posted from the FromGroup
     this.product = this.frmProduct.value;
-    this.products = this.logic.addProduct(this.product);
+    //this.products = this.logic.addProduct(this.product);
+    this.serv.postData(this.product).subscribe((resp) => {
+      if(resp != null){
+        this.serv.getData().subscribe((productResponse)=>{
+          this.products = productResponse;
+          console.log(this.products);
+        })
+      }
+    },(err)=>{
+      console.log(err);
+    });
     
   }
   getSelectedProduct(event): void {
@@ -99,9 +117,22 @@ export class ProductReactiveFormComponent implements OnInit {
     return this.products;
   }
   deleteRecord(event):void{
-    let index = this.products.indexOf(event);
-    if( index >= 0 ){
-      this.products.splice(index, 1);
-    }
+    //let index = this.products.indexOf(event);
+    let productRowId = event.ProductRowId;
+    this.serv.deleteData(productRowId).subscribe((resp) => {
+      if(resp != null){
+        this.serv.getData().subscribe((getResp) => {
+          this.products = getResp;
+          this.message = `Data Received Successfully`;
+        }, (error) => {
+          this.message = `Error Occured ${error}`;
+        });
+      }
+    }, (error) => {
+      this.message = `Error Occured ${error}`;
+    });
+    // if( index >= 0 ){
+    //   this.products.splice(index, 1);
+    // }
   }
 }

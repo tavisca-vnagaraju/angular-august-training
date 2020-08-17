@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export class TableDirectiveComponent implements OnInit {
   private dataSource: Array<any>;
+  private initialised:Boolean = false;
   headers: Array<string>;
   @Output() // EventEmitter<T>, cass used to emit event with payload parameter as T
   notify: EventEmitter<any>;
@@ -19,7 +20,9 @@ export class TableDirectiveComponent implements OnInit {
     this.deleteRecord = new EventEmitter<any>();
   }
 
-  ngOnInit():void { }
+  ngOnInit():void {
+    this.initialised = true;
+   }
 
   // parent will be able to use datasourve property for
   // property binding
@@ -27,9 +30,12 @@ export class TableDirectiveComponent implements OnInit {
   set DataSource(val: Array<any>) {
     if (val.length > 0) {
       this.dataSource = val;
-      // generate headers from the first record of the array
-      for (const p of Object.keys(this.dataSource[0])) {
-        this.headers.push(p);
+      if(this.initialised){
+        // generate headers from the first record of the array
+        for (const p of Object.keys(this.dataSource[0])) {
+          this.headers.push(p);
+        }
+        this.initialised = false;
       }
     } else {
       this.dataSource = new Array<any>();

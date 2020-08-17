@@ -36,6 +36,6 @@ import { ServiceComponent } from './components/servicecomponent/app.service.comp
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [ServiceComponent]
+  bootstrap: [ProductReactiveFormComponent]
 })
 export class AppModule { }
