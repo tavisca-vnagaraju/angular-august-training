@@ -9,9 +9,9 @@ export const Manufacturers = [
 
 
 export const CategoriesData = [
-  {CatedotyId: 201, CategoryName: 'Electronics'},
-  {CatedotyId: 202, CategoryName: 'Electrical'},
-  {CatedotyId: 203, CategoryName: 'Food'}
+  {CategoryId: 201, CategoryName: 'Electronics'},
+  {CategoryId: 202, CategoryName: 'Electrical'},
+  {CategoryId: 203, CategoryName: 'Food'}
 ];
 
 export const ProductsData: Array<Product> = [
