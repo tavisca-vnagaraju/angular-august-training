@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DropDownElement implements OnInit {
   private _items: Array<any>;
   private enable:boolean;
-  private jsonKeys:Array<any>;
+  public jsonKeys:Array<any>;
   selectedValue: any;
   
   @Output()
