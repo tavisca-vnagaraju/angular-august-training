@@ -77,6 +77,7 @@ export class ServiceComponent implements OnInit {
 
   private loadData(): void {
     this.serv.getData().subscribe((resp) => {
+      console.log(resp);
       this.products = resp;
       this.message = `Data Received Successfully`;
     }, (error) => {

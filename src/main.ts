@@ -8,8 +8,5 @@ if (environment.production) {
   enableProdMode();
 }
 
-// boostrap Agular apoplication in browser
-// load the AppModule (first Angular module) in browser
-// and start executing it.
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

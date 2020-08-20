@@ -5,8 +5,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let record of DataSource" [setColor]="'red'" (click)="rowClick(record)">
+        <tr *ngFor="let record of DataSource" (click)="rowClick(record)">
             <td *ngFor="let h of headers">{{record[h]}}</td>
+            <input *ngIf="isDelete" type="button" value="Delete" class="btn btn-danger" (click)="onDelete(record)">
         </tr>
     </tbody>
 </table>
