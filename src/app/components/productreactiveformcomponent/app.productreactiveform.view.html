@@ -7,7 +7,7 @@
                     <div class="container">
                         <div class="form-group">
                             <label>Product Row Id</label>
-                            <input type="text" class="form-control" formControlName="ProductRowId" name="ProductRowId" autocomplete="off">
+                            <input type="text" class="form-control" formControlName="ProductRowId" name="ProductRowId">
                             <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductRowId.dirty && !frmProduct.controls.ProductRowId.valid">
                                 <p *ngIf="frmProduct.controls.ProductRowId.errors.required">Product Row Id is required</p>
                                 <p *ngIf="frmProduct.controls.ProductRowId.errors.minlength">Product Row Id is min 2 dights</p>
@@ -18,22 +18,11 @@
                         </div>
                         <div class="form-group">
                             <label>Product Id</label>
-                            <input type="text" class="form-control" formControlName="ProductId" name="ProductId" autocomplete="off">
-                            <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductId.dirty && !frmProduct.controls.ProductId.valid">
-                                <p *ngIf="frmProduct.controls.ProductId.errors.required">Product Id is required</p>
-                                <p *ngIf="frmProduct.controls.ProductId.errors.minlength">Product Id is min 2 dights</p>
-                                <p *ngIf="frmProduct.controls.ProductId.errors.maxlength">Product Id can be max 10 digits</p>
-                                <p *ngIf="frmProduct.controls.ProductId.errors.pattern">Product Id must be numeric</p>
-                                <p *ngIf="!frmProduct.controls.ProductId.errors.Duplicate">Product Id must be Unique</p>
-                            </div>
+                            <input type="text" class="form-control" formControlName="ProductId" name="ProductId">
                         </div>
                         <div class="form-group">
                             <label>Product Name</label>
-                            <input type="text" class="form-control" formControlName="ProductName" name="ProductName" autocomplete="off">
-                            <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductName.dirty && !frmProduct.controls.ProductName.valid">
-                                <p *ngIf="frmProduct.controls.ProductName.errors.required">Product Name is required</p>
-                                <p *ngIf="frmProduct.controls.ProductName.errors.pattern">Product Name must not contain special characters</p>
-                            </div>
+                            <input type="text" class="form-control" formControlName="ProductName" name="ProductName">
                         </div>
                         <div class="form-group">
                             <label>Category Name</label>
@@ -50,19 +39,11 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input type="text" class="form-control" formControlName="Description" name="Description" autocomplete="off">
-                        <div class="alert alert-danger" *ngIf="frmProduct.controls.Description.dirty && !frmProduct.controls.Description.valid">
-                            <p *ngIf="frmProduct.controls.Description.errors.required">Description is required</p>
-                            <p *ngIf="frmProduct.controls.Description.errors.maxlength">Description cannot be more than 50 characters</p>
-                        </div>
+                        <input type="text" class="form-control" formControlName="Description" name="Description">
                     </div>
                     <div class="form-group">
                         <label>Base Price</label>
-                        <input type="text" class="form-control" formControlName="BasePrice" name="BasePrice" autocomplete="off">
-                        <div class="alert alert-danger" *ngIf="frmProduct.controls.BasePrice.dirty && !frmProduct.controls.BasePrice.valid">
-                            <p *ngIf="frmProduct.controls.BasePrice.errors.required">BasePrice is required</p>
-                            <p *ngIf="frmProduct.controls.BasePrice.errors.min">BasePrice cannot be negative</p>
-                        </div>
+                        <input type="text" class="form-control" formControlName="BasePrice" name="BasePrice">
                     </div>
                     <div class="form-group">
                         <input type="button" value="Clear" (click)="clear()" class="btn btn-warning">
@@ -75,11 +56,7 @@
             <div class="container">
 
                 <h3>Dynamic Table</h3>
-                <app-tabledirective-component 
-                        [isDelete]="true" 
-                        [DataSource]="products" 
-                        (notify)="getSelectedProduct($event)"
-                        (deleteRecord)="deleteRecord($event)">
+                <app-tabledirective-component [DataSource]="products" (notify)="getSelectedProduct($event)">
                 </app-tabledirective-component>
 
             </div>
